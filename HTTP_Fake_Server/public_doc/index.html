@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fake Server</title>
+    <style media="screen">
+      .cont_body {
+        display: flex;
+        flex-direction: row;
+      }
+      .menu {
+        min-width: 10%;
+        background-color: red;
+      }
+      .content {
+        min-width: 85%;
+        background-color: orange;
+      }
+      .content_item {
+        margin-left: 1vw;
+      }
+      li {
+        list-style-type: none;
+      }
+      a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+table, th, td {
+    border: solid 1px black;
+}
+td{
+    padding:5px;
+}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <center>
+          <h1>
+            Fake Server
+          </h1>
+          <p>
+            Small test server.
+          </p>
+          <hr />
+        </center>
+      </div>
+      <div class="cont_body">
+        <div class="menu">
+          <ul class="menu_left">
+            <li><a href="#intro">Introduction</a></li>
+            <li><a href="#routes">Available Routes</a></li>
+          </ul>
+        </div>
+        <div class="content">
+          <div id="intro" class="content_item">
+            <h3>Introduction</h3>
+            <p>
+              This is a small test server. Contains a series of "end_points"
+              serving json objects. Designed to study front-end frameworks such
+              as 'vuejs', 'reactjs', etc. The idea is to replace the "hour and a
+              half" search on the internet for free "apis" when studying the
+              frameworks mentioned above.
+            </p>
+          </div>
+          
+          <div id="routes" class="content_item">
+            <h3>Available Routes</h3>
+            <p>Below you will find a list of available routes that you can use along with the necessary information about it.
+            </p>
+            <centrer>
+                <table>
+                    <tbody>
+                    <tr>
+                        <td>Route</td>
+                        <td>Available Methods</td>
+                        <td>Returns</td>
+                        <td>Description</td>
+                    </tr>
+                    <tr>
+                    <td><a href="/basic_profile">/basic_profile</a></td>
+                    <td>GET</td>
+                    <td> Json Object</td>
+                    <td>                            Returns a json object that contains a basic user profile.</td>
+                    </tr>
+                    <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    </tr>
+                    </tbody>
+                    </table>
+             
+            </centrer>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
