@@ -24,6 +24,7 @@ class Fake_Server(BaseHTTPRequestHandler):
         """
 
         if self.path == '/':
+            # Returns the main page of the server. Contains documentation related to available end-points.
             self.path = '/public_doc/index.html'
             try:
                 file_to_open = open(self.path[1:]).read()
