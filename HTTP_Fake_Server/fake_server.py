@@ -245,6 +245,7 @@ class Fake_Server(BaseHTTPRequestHandler):
 
         # Full name only one
         if re.match(r'/full_name$', self.path) is not None:
+            # Returns an object containing a full name, last name, and first names.
             parsed_path = parse.urlparse(self.path)
             data_req = {
                 'id': str(uuid.uuid4()),
