@@ -13,7 +13,6 @@ from faker.providers import geo
 class Fake_Server(BaseHTTPRequestHandler):
 
     def do_GET(self):
-<<<<<<< HEAD
         """
         .########..##.....##.########..##.......####..######.
         .##.....##.##.....##.##.....##.##........##..##....##
@@ -24,17 +23,8 @@ class Fake_Server(BaseHTTPRequestHandler):
         .##.........#######..########..########.####..######.
         """
 
-=======
-         
-        # ██████╗  █████╗ ███████╗███████╗    ██████╗  ██████╗  ██████╗
-        # ██╔══██╗██╔══██╗██╔════╝██╔════╝    ██╔══██╗██╔═══██╗██╔════╝
-        # ██████╔╝███████║███████╗█████╗      ██║  ██║██║   ██║██║
-        # ██╔══██╗██╔══██║╚════██║██╔══╝      ██║  ██║██║   ██║██║
-        # ██████╔╝██║  ██║███████║███████╗    ██████╔╝╚██████╔╝╚██████╗
-        # ╚═════╝ ╚═╝  ╚═╝╚══════╝╚══════╝    ╚═════╝  ╚═════╝  ╚═════╝
-        
->>>>>>> 2f2dedbf2a68311ba34929de225d2f62797f8290
         if self.path == '/':
+            # Returns the main page of the server. Contains documentation related to available end-points.
             self.path = '/public_doc/index.html'
             try:
                 file_to_open = open(self.path[1:]).read()
@@ -45,7 +35,6 @@ class Fake_Server(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(bytes(file_to_open, 'utf-8'))
 
-<<<<<<< HEAD
         """
         .########..########...#######..########.####.##.......########
         .##.....##.##.....##.##.....##.##........##..##.......##......
@@ -58,6 +47,22 @@ class Fake_Server(BaseHTTPRequestHandler):
 
         # Basic Profile
         if re.match(r'/basic_profile$', self.path) is not None:
+            """
+            This end-point returns a basic user profile.
+            It contains the following elements:
+            {'id': <str: It corresponds to a unique basic id for the request made, it can be used for profile-id.>, 
+            'req_url': <str: It contains the url of the request completely parceled. Can be used as debug mode>, 
+            'basic_profile':
+                 {'username': <str: A username for the user.>, 
+                 'name': <str:Full name of the user.>, 
+                 'sex': <str: A single letter to define the gender of the user.>, 
+                 'address': <str: An address for the user.>,
+                  'mail':<str: A valid e-mail address.>,
+                   'birthdate':< date: Retorna un objeto python tipo 'date'-> ej: date(1954, 9, 4)>
+                   }
+                   }
+            """
+
             parsed_path = parse.urlparse(self.path)
             data_req = {
                 'id': str(uuid.uuid4()),
@@ -71,7 +76,18 @@ class Fake_Server(BaseHTTPRequestHandler):
             self.wfile.write(bytes(message, 'utf-8'))
 
         # Basic Profile various
-        if re.match(r'/basic_profile/\d$', self.path) is not None:
+        if re.match(r'/basic_profile/various/\d$', self.path) is not None:
+            """
+            It is the same end-point as '/basic_profile' but allows requesting <n> number of profiles simultaneously.
+            Retorna un objeto como este:
+            "{
+                'id': <str: It corresponds to a unique basic id for the request made, it can be used for profile-id.>, 
+                'req_url': <str: It contains the url of the request completely parceled. Can be used as debug mode>, 
+                'required_quantity': <int: It corresponds to the required quantity. It is for debugging purposes.>, 
+                'profiles':<array: Corresponds to an array of objects that contains the required number of basic profiles.> 
+                }"
+            """
+
             parsed_path = parse.urlparse(self.path)
             quant = int(self.path.split('/')[-1])
             data_req = {
@@ -88,6 +104,7 @@ class Fake_Server(BaseHTTPRequestHandler):
 
         # Basic Profile by Sex only one
         if re.match(r'/basic_profile/sex/[M|F]$', self.path) is not None:
+            # End-point that returns a basic male or female profile as requested.
             parsed_path = parse.urlparse(self.path)
             sex = self.path.split('/')[-1]
             F = Faker()
@@ -106,6 +123,17 @@ class Fake_Server(BaseHTTPRequestHandler):
 
         # Basic Profile by Sex various
         if re.match(r'/basic_profile/sex/[M|F]/\d+$', self.path) is not None:
+            """
+            Returns a group of basic profiles as requested, male or female and determined amount.
+            Sample answer:
+            "{
+                'id': <str:Corresponds to a unique ID for the server response ... It is used for the calls of react 'unique-key'.>,
+                'req_url': <str: The fully parceled url. To debug>,
+                'sex_req': <str: One digit corresponding to the sex of the required profiles.>,
+                'quantity_required': <int: The number of profiles required corresponds.>,
+                'profiles': <array: It is an array containing each of the individual basic profiles.>
+                }"
+            """
             parsed_path = parse.urlparse(self.path)
             sex = self.path.split('/')[-2]
             quant = int(self.path.split('/')[-1])
@@ -126,6 +154,29 @@ class Fake_Server(BaseHTTPRequestHandler):
 
         # Full Profile
         if re.match(r'/full_profile$', self.path) is not None:
+            """
+            Returns a complete personal profile. (User profile.)
+            Sample answer: 
+            "{
+                'id': <str: It corresponds to a unique basic id for the request made, it can be used for profile-id.>, 
+                'req_url': <str: It contains the url of the request completely parceled. Can be used as debug mode>, 
+                'full_profile': {
+                    'job': <str: Describes the profession of the generated user.>,
+                    'company': <str: Corresponds to the name of the company of the generated user.>,
+                    'ssn': <str: Corresponds to the social security number of the created user.>,
+                    'residence': <str: Corresponds to a user's residence address.>,
+                    'current_location': <touple: A python-tuple of GPS positions corresponds to the current position of the user.>,
+                    'blood_group': <str: Corresponds to the user's blood group.>, 
+                    'website': <array: Corresponds to an array of urls.>, 
+                    'username': <str:Corresponds to a username for the user.>,
+                    'name': <str: Corresponds to the full name of the user.>,
+                    'sex': <str: A digit corresponding to the gender of the user generated.>,
+                    'address': <str: A second address, can be used as a work address.>,
+                    'mail': <str: An email address for the user.>,
+                    'birthdate': <date: Date object, corresponding to the user's birthday.>
+                       }
+                       }"
+            """
             parsed_path = parse.urlparse(self.path)
             F = Faker()
             F.add_provider(profile)
@@ -142,16 +193,6 @@ class Fake_Server(BaseHTTPRequestHandler):
 
         # Full Profile by Sex only one
         if re.match(r'/full_profile/sex/[M|F]$', self.path) is not None:
-=======
-        
-        # ██████╗ ██████╗  ██████╗ ███████╗██╗██╗     ███████╗
-        # ██╔══██╗██╔══██╗██╔═══██╗██╔════╝██║██║     ██╔════╝
-        # ██████╔╝██████╔╝██║   ██║█████╗  ██║██║     █████╗
-        # ██╔═══╝ ██╔══██╗██║   ██║██╔══╝  ██║██║     ██╔══╝
-        # ██║     ██║  ██║╚██████╔╝██║     ██║███████╗███████╗
-        # ╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝╚══════╝
-        if self.path == '/basic_profile':
->>>>>>> 2f2dedbf2a68311ba34929de225d2f62797f8290
             parsed_path = parse.urlparse(self.path)
             F = Faker()
             F.add_provider(profile)
@@ -245,13 +286,9 @@ class Fake_Server(BaseHTTPRequestHandler):
             self.send_header('Content-Type', 'application/json; charset=utf-8')
             self.end_headers()
             self.wfile.write(bytes(message, 'utf-8'))
-<<<<<<< HEAD
 
         # Surname various
         if re.match(r'/last_name/\d+$', self.path) is not None:
-=======
-        if self.path == '/full_name':
->>>>>>> 2f2dedbf2a68311ba34929de225d2f62797f8290
             parsed_path = parse.urlparse(self.path)
             quant = int(self.path.split('/')[-1])
             data_req = {
@@ -296,7 +333,6 @@ class Fake_Server(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(bytes(message, 'utf-8'))
 
-<<<<<<< HEAD
         # Address only one
         if re.match(r'/address$', self.path) is not None:
             parsed_path = parse.urlparse(self.path)
@@ -343,18 +379,6 @@ class Fake_Server(BaseHTTPRequestHandler):
             data_req = {
                 'id': str(uuid.uuid4()),
                 'req_url': self.path,
-=======
-        # ██╗   ██╗ █████╗ ██████╗ ██╗███████╗██████╗
-        # ██║   ██║██╔══██╗██╔══██╗██║██╔════╝██╔══██╗
-        # ██║   ██║███████║██████╔╝██║█████╗  ██║  ██║
-        # ╚██╗ ██╔╝██╔══██║██╔══██╗██║██╔══╝  ██║  ██║
-        #  ╚████╔╝ ██║  ██║██║  ██║██║███████╗██████╔╝
-        #   ╚═══╝  ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚══════╝╚═════╝
-        if self.path == '/task':
-            parsed_path = parse.urlparse(self.path)
-            task = {
-                'id':str(uuid.uuid4()),
->>>>>>> 2f2dedbf2a68311ba34929de225d2f62797f8290
                 'task': Faker().sentence(),
                 'responsible': str(Faker().name()),
                 'status': choice(['completed', 'pending', 'finished', 'lacks_approval']),
@@ -417,7 +441,6 @@ class Fake_Server(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(bytes(message, 'utf-8'))
 
-<<<<<<< HEAD
         # Local lat & long only one
         if re.match(r'/lat_long/local/\w+$', self.path) is not None:
             parsed_path = parse.urlparse(self.path)
@@ -430,36 +453,10 @@ class Fake_Server(BaseHTTPRequestHandler):
                 'lat_long': f.local_latlng(country_code=str(loc))
             }
             message = json.dumps(str(data_req))
-=======
-        if re.match(r'/task/\d+',self.path) is not None:
-            parsed_path = parse.urlparse(self.path)
-            total_req = int(self.path.split('/')[-1])
-            req = {
-            'req_url':self.path,
-            'quantity_req': self.path.split('/')[-1],
-            'tasks':[{
-                'id':str(uuid.uuid4()),
-                'task': Faker().sentence(),
-                'responsible': str(Faker().name()),
-                'status': choice(['completed', 'pending', 'finished', 'lacks_approval']),
-                'created': str(Faker().date()),
-                'priority_level' : choice(['high ',' medium ',' low ',' moderate ',' undefined']),
-                'term_in_days': choice([i for i in range(0,30)])
-            } for i in range(0,total_req)],
-            }
-            
-                
-            message = json.dumps(str(req))
->>>>>>> 2f2dedbf2a68311ba34929de225d2f62797f8290
             self.send_response(200)
             self.send_header('Content-Type', 'application/json; charset=utf-8')
             self.end_headers()
             self.wfile.write(bytes(message, 'utf-8'))
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 2f2dedbf2a68311ba34929de225d2f62797f8290
 
         # Local lat & long various
         if re.match(r'/lat_long/local/\w+/\d+$', self.path) is not None:
