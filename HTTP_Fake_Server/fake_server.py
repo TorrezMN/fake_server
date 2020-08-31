@@ -259,7 +259,8 @@ class Fake_Server(BaseHTTPRequestHandler):
             self.wfile.write(bytes(message, 'utf-8'))
 
         # Full name various
-        if re.match(r'/full_name/\d+$', self.path) is not None:
+        if re.match(r'/full_name/various/\d+$', self.path) is not None:
+            # It allows to receive multiple elements within an array of full names.
             parsed_path = parse.urlparse(self.path)
             quant = int(self.path.split('/')[-1])
             data_req = {
