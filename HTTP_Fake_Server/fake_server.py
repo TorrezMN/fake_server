@@ -47,6 +47,22 @@ class Fake_Server(BaseHTTPRequestHandler):
 
         # Basic Profile
         if re.match(r'/basic_profile$', self.path) is not None:
+            """
+            This end-point returns a basic user profile.
+            It contains the following elements:
+            {'id': <str: It corresponds to a unique basic id for the request made, it can be used for profile-id.>, 
+            'req_url': <str: It contains the url of the request completely parceled. Can be used as debug mode>, 
+            'basic_profile':
+                 {'username': <str: A username for the user.>, 
+                 'name': <str:Full name of the user.>, 
+                 'sex': <str: A single letter to define the gender of the user.>, 
+                 'address': <str: An address for the user.>,
+                  'mail':<str: A valid e-mail address.>,
+                   'birthdate':< date: Retorna un objeto python tipo 'date'-> ej: date(1954, 9, 4)>
+                   }
+                   }
+            """
+
             parsed_path = parse.urlparse(self.path)
             data_req = {
                 'id': str(uuid.uuid4()),
@@ -60,7 +76,18 @@ class Fake_Server(BaseHTTPRequestHandler):
             self.wfile.write(bytes(message, 'utf-8'))
 
         # Basic Profile various
-        if re.match(r'/basic_profile/\d$', self.path) is not None:
+        if re.match(r'/basic_profile/various/\d$', self.path) is not None:
+            """
+            It is the same end-point as '/basic_profile' but allows requesting <n> number of profiles simultaneously.
+            Retorna un objeto como este:
+            "{
+                'id': <str: It corresponds to a unique basic id for the request made, it can be used for profile-id.>, 
+                'req_url': <str: It contains the url of the request completely parceled. Can be used as debug mode>, 
+                'required_quantity': <int: It corresponds to the required quantity. It is for debugging purposes.>, 
+                'profiles':<array: Corresponds to an array of objects that contains the required number of basic profiles.> 
+                }"
+            """
+
             parsed_path = parse.urlparse(self.path)
             quant = int(self.path.split('/')[-1])
             data_req = {
@@ -77,6 +104,7 @@ class Fake_Server(BaseHTTPRequestHandler):
 
         # Basic Profile by Sex only one
         if re.match(r'/basic_profile/sex/[M|F]$', self.path) is not None:
+            # End-point that returns a basic male or female profile as requested.
             parsed_path = parse.urlparse(self.path)
             sex = self.path.split('/')[-1]
             F = Faker()
@@ -95,6 +123,17 @@ class Fake_Server(BaseHTTPRequestHandler):
 
         # Basic Profile by Sex various
         if re.match(r'/basic_profile/sex/[M|F]/\d+$', self.path) is not None:
+            """
+            Returns a group of basic profiles as requested, male or female and determined amount.
+            Sample answer:
+            "{
+                'id': <str:Corresponds to a unique ID for the server response ... It is used for the calls of react 'unique-key'.>,
+                'req_url': <str: The fully parceled url. To debug>,
+                'sex_req': <str: One digit corresponding to the sex of the required profiles.>,
+                'quantity_required': <int: The number of profiles required corresponds.>,
+                'profiles': <array: It is an array containing each of the individual basic profiles.>
+                }"
+            """
             parsed_path = parse.urlparse(self.path)
             sex = self.path.split('/')[-2]
             quant = int(self.path.split('/')[-1])
@@ -115,6 +154,29 @@ class Fake_Server(BaseHTTPRequestHandler):
 
         # Full Profile
         if re.match(r'/full_profile$', self.path) is not None:
+            """
+            Returns a complete personal profile. (User profile.)
+            Sample answer: 
+            "{
+                'id': <str: It corresponds to a unique basic id for the request made, it can be used for profile-id.>, 
+                'req_url': <str: It contains the url of the request completely parceled. Can be used as debug mode>, 
+                'full_profile': {
+                    'job': <str: Describes the profession of the generated user.>,
+                    'company': <str: Corresponds to the name of the company of the generated user.>,
+                    'ssn': <str: Corresponds to the social security number of the created user.>,
+                    'residence': <str: Corresponds to a user's residence address.>,
+                    'current_location': <touple: A python-tuple of GPS positions corresponds to the current position of the user.>,
+                    'blood_group': <str: Corresponds to the user's blood group.>, 
+                    'website': <array: Corresponds to an array of urls.>, 
+                    'username': <str:Corresponds to a username for the user.>,
+                    'name': <str: Corresponds to the full name of the user.>,
+                    'sex': <str: A digit corresponding to the gender of the user generated.>,
+                    'address': <str: A second address, can be used as a work address.>,
+                    'mail': <str: An email address for the user.>,
+                    'birthdate': <date: Date object, corresponding to the user's birthday.>
+                       }
+                       }"
+            """
             parsed_path = parse.urlparse(self.path)
             F = Faker()
             F.add_provider(profile)
