@@ -277,6 +277,7 @@ class Fake_Server(BaseHTTPRequestHandler):
 
         # Surname only
         if re.match(r'/last_name$', self.path) is not None:
+            # Returns a unique surname.
             parsed_path = parse.urlparse(self.path)
             data_req = {
                 'id': str(uuid.uuid4()),
@@ -291,6 +292,7 @@ class Fake_Server(BaseHTTPRequestHandler):
 
         # Surname various
         if re.match(r'/last_name/\d+$', self.path) is not None:
+            # It allows to obtain a list of 'n' surnames, as requested.
             parsed_path = parse.urlparse(self.path)
             quant = int(self.path.split('/')[-1])
             data_req = {
@@ -307,6 +309,7 @@ class Fake_Server(BaseHTTPRequestHandler):
 
         # Name only one
         if re.match(r'/first_name', self.path) is not None:
+            
             parsed_path = parse.urlparse(self.path)
             data_req = {
                 'id': str(uuid.uuid4()),
