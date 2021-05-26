@@ -2,14 +2,14 @@
 
 ---
 
-
-                 ______      __           _____
-                / ____/___ _/ /_____     / ___/___  ______   _____  _____
-               / /_  / __ `/ //_/ _ \    \__ \/ _ \/ ___/ | / / _ \/ ___/
-              / __/ / /_/ / ,< /  __/   ___/ /  __/ /   | |/ /  __/ /
-             /_/    \__,_/_/|_|\___/   /____/\___/_/    |___/\___/_/
-            
-
+   
+                    ______      __           _____
+                   / ____/___ _/ /_____     / ___/___  ______   _____  _____
+                  / /_  / __ `/ //_/ _ \    \__ \/ _ \/ ___/ | / / _ \/ ___/
+                 / __/ / /_/ / ,< /  __/   ___/ /  __/ /   | |/ /  __/ /
+                /_/    \__,_/_/|_|\___/   /____/\___/_/    |___/\___/_/
+               
+   
 
 
 
@@ -44,7 +44,7 @@
 
 ## 🧐 About <a name = "about"></a>
 
-A time ago I start studying react native and needed a way to have data to test the applications.
+A time ago I start studying React Native, like many with video tutorials and documentation. The problem was that you have to try what you learned and one of the basic projects are the applications Type: "Task Lists", In which one has to "load" data in the application. So I decided to do a server that generates random data about various topics to try locally.
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
