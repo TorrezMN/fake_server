@@ -372,7 +372,9 @@ class Fake_Server(BaseHTTPRequestHandler):
         ....##....##.....##.##....##.##...##..##....##
         ....##....##.....##..######..##....##..######.
         """
-
+        # TODO : Add some way to handle inside the server task lists.
+        # TODO : Add a way to add items to a 'Task List'.
+        # TODO : Add a way to remove items from a 'Task list'.
         # Single task
         if re.match(r'/task', self.path) is not None:
             parsed_path = parse.urlparse(self.path)
