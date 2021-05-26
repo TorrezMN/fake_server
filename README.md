@@ -2,17 +2,11 @@
 
 ---
 
-   
-                    ______      __           _____
-                   / ____/___ _/ /_____     / ___/___  ______   _____  _____
-                  / /_  / __ `/ //_/ _ \    \__ \/ _ \/ ___/ | / / _ \/ ___/
-                 / __/ / /_/ / ,< /  __/   ___/ /  __/ /   | |/ /  __/ /
-                /_/    \__,_/_/|_|\___/   /____/\___/_/    |___/\___/_/
-               
-   
-
-
-
+                              ______      __           _____
+                             / ____/___ _/ /_____     / ___/___  ______   _____  _____
+                            / /_  / __ `/ //_/ _ \    \__ \/ _ \/ ___/ | / / _ \/ ___/
+                           / __/ / /_/ / ,< /  __/   ___/ /  __/ /   | |/ /  __/ /
+                          /_/    \__,_/_/|_|\___/   /____/\___/_/    |___/\___/_/
 
 
 <!-- <div align="center">
@@ -44,7 +38,7 @@
 
 ## 🧐 About <a name = "about"></a>
 
-A time ago I start studying React Native, like many with video tutorials and documentation. The problem was that you have to try what you learned and one of the basic projects are the applications Type: "Task Lists", In which one has to "load" data in the application. So I decided to do a server that generates random data about various topics to try locally.
+A time ago I start studying React Native, like many with video tutorials and documentation. The problem was that you have to try what you learned and one of the basic projects are the applications Type: "Task Lists", in which one has to "load" data in the application. So I decided to do a server that generates random data about various topics to try locally. (And be able to practice calls to APIs as well.)
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
