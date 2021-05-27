@@ -572,6 +572,8 @@ class Fake_Server(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(bytes(message, 'utf-8'))
 
+
+        # TODO: Add Paraguay data.
 if __name__ == '__main__':
     from http.server import HTTPServer
     server = HTTPServer(('localhost', 8080), Fake_Server)
