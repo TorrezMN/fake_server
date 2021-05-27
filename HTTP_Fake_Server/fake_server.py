@@ -525,6 +525,7 @@ class Fake_Server(BaseHTTPRequestHandler):
         ..###..###..########.##.....##....##....##.....##.########.##.....##
         """
         # TODO : Test support for simulations 'Real Time Requests'.
+        # TODO : Add support for data download type 'json'.
         # Single weather report
         if re.match(r'/weather$', self.path) is not None:
             parsed_path = parse.urlparse(self.path)
