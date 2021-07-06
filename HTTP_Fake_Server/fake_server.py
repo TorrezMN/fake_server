@@ -370,20 +370,6 @@ class Fake_Server(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(bytes(message, 'utf-8'))
 
-<<<<<<< HEAD
-        """
-        .########....###.....######..##....##..######.
-        ....##......##.##...##....##.##...##..##....##
-        ....##.....##...##..##.......##..##...##......
-        ....##....##.....##..######..#####.....######.
-        ....##....#########.......##.##..##.........##
-        ....##....##.....##.##....##.##...##..##....##
-        ....##....##.....##..######..##....##..######.
-        """
-        # TODO : Add some way to handle inside the server task lists.
-        # TODO : Add a way to add items to a 'Task List'.
-        # TODO : Add a way to remove items from a 'Task list'.
-=======
         # $$$$$$$$\                  $$\
         # \__$$  __|                 $$ |
         #    $$ | $$$$$$\   $$$$$$$\ $$ |  $$\  $$$$$$$\
@@ -396,7 +382,6 @@ class Fake_Server(BaseHTTPRequestHandler):
 
 
 
->>>>>>> development
         # Single task
         if re.match(r'/task', self.path) is not None:
             parsed_path = parse.urlparse(self.path)
@@ -539,19 +524,6 @@ class Fake_Server(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(bytes(message, 'utf-8'))
 
-<<<<<<< HEAD
-        """
-        .##......##.########....###....########.##.....##.########.########.
-        .##..##..##.##.........##.##......##....##.....##.##.......##.....##
-        .##..##..##.##........##...##.....##....##.....##.##.......##.....##
-        .##..##..##.######...##.....##....##....#########.######...########.
-        .##..##..##.##.......#########....##....##.....##.##.......##...##..
-        .##..##..##.##.......##.....##....##....##.....##.##.......##....##.
-        ..###..###..########.##.....##....##....##.....##.########.##.....##
-        """
-        # TODO : Test support for simulations 'Real Time Requests'.
-        # TODO : Add support for data download type 'json'.
-=======
         # $$\      $$\                      $$\     $$\
         # $$ | $\  $$ |                     $$ |    $$ |
         # $$ |$$$\ $$ | $$$$$$\   $$$$$$\ $$$$$$\   $$$$$$$\   $$$$$$\   $$$$$$\
@@ -563,7 +535,6 @@ class Fake_Server(BaseHTTPRequestHandler):
 
 
 
->>>>>>> development
         # Single weather report
         if re.match(r'/weather$', self.path) is not None:
             parsed_path = parse.urlparse(self.path)
@@ -611,9 +582,6 @@ class Fake_Server(BaseHTTPRequestHandler):
             self.wfile.write(bytes(message, 'utf-8'))
 
 
-<<<<<<< HEAD
-        # TODO: Add Paraguay data.
-=======
 
         # $$\   $$\                     $$\   $$\     $$\
         # $$ |  $$ |                    $$ |  $$ |    $$ |
@@ -669,7 +637,6 @@ class Fake_Server(BaseHTTPRequestHandler):
 
 
 
->>>>>>> development
 if __name__ == '__main__':
     from http.server import HTTPServer
     server = HTTPServer(('localhost', 8080), Fake_Server)
