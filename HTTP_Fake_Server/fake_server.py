@@ -13,15 +13,15 @@ from faker.providers import geo
 class Fake_Server(BaseHTTPRequestHandler):
 
     def do_GET(self):
-        """
-        .########..##.....##.########..##.......####..######.
-        .##.....##.##.....##.##.....##.##........##..##....##
-        .##.....##.##.....##.##.....##.##........##..##......
-        .########..##.....##.########..##........##..##......
-        .##........##.....##.##.....##.##........##..##......
-        .##........##.....##.##.....##.##........##..##....##
-        .##.........#######..########..########.####..######.
-        """
+        # $$$$$$$\            $$\       $$\ $$\
+        # $$  __$$\           $$ |      $$ |\__|
+        # $$ |  $$ |$$\   $$\ $$$$$$$\  $$ |$$\  $$$$$$$\
+        # $$$$$$$  |$$ |  $$ |$$  __$$\ $$ |$$ |$$  _____|
+        # $$  ____/ $$ |  $$ |$$ |  $$ |$$ |$$ |$$ /
+        # $$ |      $$ |  $$ |$$ |  $$ |$$ |$$ |$$ |
+        # $$ |      \$$$$$$  |$$$$$$$  |$$ |$$ |\$$$$$$$\
+        # \__|       \______/ \_______/ \__|\__| \_______|
+
 
         if self.path == '/':
             # Returns the main page of the server. Contains documentation related to available end-points.
@@ -35,15 +35,17 @@ class Fake_Server(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(bytes(file_to_open, 'utf-8'))
 
-        """
-        .########..########...#######..########.####.##.......########
-        .##.....##.##.....##.##.....##.##........##..##.......##......
-        .##.....##.##.....##.##.....##.##........##..##.......##......
-        .########..########..##.....##.######....##..##.......######..
-        .##........##...##...##.....##.##........##..##.......##......
-        .##........##....##..##.....##.##........##..##.......##......
-        .##........##.....##..#######..##.......####.########.########
-        """
+        # $$$$$$$\                       $$$$$$\  $$\ $$\
+        # $$  __$$\                     $$  __$$\ \__|$$ |
+        # $$ |  $$ | $$$$$$\   $$$$$$\  $$ /  \__|$$\ $$ | $$$$$$\
+        # $$$$$$$  |$$  __$$\ $$  __$$\ $$$$\     $$ |$$ |$$  __$$\
+        # $$  ____/ $$ |  \__|$$ /  $$ |$$  _|    $$ |$$ |$$$$$$$$ |
+        # $$ |      $$ |      $$ |  $$ |$$ |      $$ |$$ |$$   ____|
+        # $$ |      $$ |      \$$$$$$  |$$ |      $$ |$$ |\$$$$$$$\
+        # \__|      \__|       \______/ \__|      \__|\__| \_______|
+
+
+
 
         # Basic Profile
         if re.match(r'/basic_profile$', self.path) is not None:
@@ -245,6 +247,7 @@ class Fake_Server(BaseHTTPRequestHandler):
 
         # Full name only one
         if re.match(r'/full_name$', self.path) is not None:
+            # Returns an object containing a full name, last name, and first names.
             parsed_path = parse.urlparse(self.path)
             data_req = {
                 'id': str(uuid.uuid4()),
@@ -258,7 +261,8 @@ class Fake_Server(BaseHTTPRequestHandler):
             self.wfile.write(bytes(message, 'utf-8'))
 
         # Full name various
-        if re.match(r'/full_name/\d+$', self.path) is not None:
+        if re.match(r'/full_name/various/\d+$', self.path) is not None:
+            # It allows to receive multiple elements within an array of full names.
             parsed_path = parse.urlparse(self.path)
             quant = int(self.path.split('/')[-1])
             data_req = {
@@ -275,6 +279,7 @@ class Fake_Server(BaseHTTPRequestHandler):
 
         # Surname only
         if re.match(r'/last_name$', self.path) is not None:
+            # Returns a unique surname.
             parsed_path = parse.urlparse(self.path)
             data_req = {
                 'id': str(uuid.uuid4()),
@@ -289,6 +294,7 @@ class Fake_Server(BaseHTTPRequestHandler):
 
         # Surname various
         if re.match(r'/last_name/\d+$', self.path) is not None:
+            # It allows to obtain a list of 'n' surnames, as requested.
             parsed_path = parse.urlparse(self.path)
             quant = int(self.path.split('/')[-1])
             data_req = {
@@ -305,6 +311,7 @@ class Fake_Server(BaseHTTPRequestHandler):
 
         # Name only one
         if re.match(r'/first_name', self.path) is not None:
+            
             parsed_path = parse.urlparse(self.path)
             data_req = {
                 'id': str(uuid.uuid4()),
@@ -363,6 +370,7 @@ class Fake_Server(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(bytes(message, 'utf-8'))
 
+<<<<<<< HEAD
         """
         .########....###.....######..##....##..######.
         ....##......##.##...##....##.##...##..##....##
@@ -375,6 +383,20 @@ class Fake_Server(BaseHTTPRequestHandler):
         # TODO : Add some way to handle inside the server task lists.
         # TODO : Add a way to add items to a 'Task List'.
         # TODO : Add a way to remove items from a 'Task list'.
+=======
+        # $$$$$$$$\                  $$\
+        # \__$$  __|                 $$ |
+        #    $$ | $$$$$$\   $$$$$$$\ $$ |  $$\  $$$$$$$\
+        #    $$ | \____$$\ $$  _____|$$ | $$  |$$  _____|
+        #    $$ | $$$$$$$ |\$$$$$$\  $$$$$$  / \$$$$$$\
+        #    $$ |$$  __$$ | \____$$\ $$  _$$<   \____$$\
+        #    $$ |\$$$$$$$ |$$$$$$$  |$$ | \$$\ $$$$$$$  |
+        #    \__| \_______|\_______/ \__|  \__|\_______/
+
+
+
+
+>>>>>>> development
         # Single task
         if re.match(r'/task', self.path) is not None:
             parsed_path = parse.urlparse(self.path)
@@ -418,15 +440,17 @@ class Fake_Server(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(bytes(message, 'utf-8'))
 
-        """
-        ..######...########..#######.
-        .##....##..##.......##.....##
-        .##........##.......##.....##
-        .##...####.######...##.....##
-        .##....##..##.......##.....##
-        .##....##..##.......##.....##
-        ..######...########..#######.
-        """
+        #  $$$$$$\
+        # $$  __$$\
+        # $$ /  \__| $$$$$$\   $$$$$$\
+        # $$ |$$$$\ $$  __$$\ $$  __$$\
+        # $$ |\_$$ |$$$$$$$$ |$$ /  $$ |
+        # $$ |  $$ |$$   ____|$$ |  $$ |
+        # \$$$$$$  |\$$$$$$$\ \$$$$$$  |
+        #  \______/  \_______| \______/
+
+
+
         # Single lat & long
         if re.match(r'/lat_long$', self.path) is not None:
             parsed_path = parse.urlparse(self.path)
@@ -515,6 +539,7 @@ class Fake_Server(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(bytes(message, 'utf-8'))
 
+<<<<<<< HEAD
         """
         .##......##.########....###....########.##.....##.########.########.
         .##..##..##.##.........##.##......##....##.....##.##.......##.....##
@@ -526,6 +551,19 @@ class Fake_Server(BaseHTTPRequestHandler):
         """
         # TODO : Test support for simulations 'Real Time Requests'.
         # TODO : Add support for data download type 'json'.
+=======
+        # $$\      $$\                      $$\     $$\
+        # $$ | $\  $$ |                     $$ |    $$ |
+        # $$ |$$$\ $$ | $$$$$$\   $$$$$$\ $$$$$$\   $$$$$$$\   $$$$$$\   $$$$$$\
+        # $$ $$ $$\$$ |$$  __$$\  \____$$\\_$$  _|  $$  __$$\ $$  __$$\ $$  __$$\
+        # $$$$  _$$$$ |$$$$$$$$ | $$$$$$$ | $$ |    $$ |  $$ |$$$$$$$$ |$$ |  \__|
+        # $$$  / \$$$ |$$   ____|$$  __$$ | $$ |$$\ $$ |  $$ |$$   ____|$$ |
+        # $$  /   \$$ |\$$$$$$$\ \$$$$$$$ | \$$$$  |$$ |  $$ |\$$$$$$$\ $$ |
+        # \__/     \__| \_______| \_______|  \____/ \__|  \__| \_______|\__|
+
+
+
+>>>>>>> development
         # Single weather report
         if re.match(r'/weather$', self.path) is not None:
             parsed_path = parse.urlparse(self.path)
@@ -573,7 +611,65 @@ class Fake_Server(BaseHTTPRequestHandler):
             self.wfile.write(bytes(message, 'utf-8'))
 
 
+<<<<<<< HEAD
         # TODO: Add Paraguay data.
+=======
+
+        # $$\   $$\                     $$\   $$\     $$\
+        # $$ |  $$ |                    $$ |  $$ |    $$ |
+        # $$ |  $$ | $$$$$$\   $$$$$$\  $$ |$$$$$$\   $$$$$$$\
+        # $$$$$$$$ |$$  __$$\  \____$$\ $$ |\_$$  _|  $$  __$$\
+        # $$  __$$ |$$$$$$$$ | $$$$$$$ |$$ |  $$ |    $$ |  $$ |
+        # $$ |  $$ |$$   ____|$$  __$$ |$$ |  $$ |$$\ $$ |  $$ |
+        # $$ |  $$ |\$$$$$$$\ \$$$$$$$ |$$ |  \$$$$  |$$ |  $$ |
+        # \__|  \__| \_______| \_______|\__|   \____/ \__|  \__|
+
+        # Single health report
+        if re.match(r'/health$', self.path) is not None:
+            parsed_path = parse.urlparse(self.path)
+            data_req = {
+                'id': str(uuid.uuid4()),
+                'req_url': self.path,
+                'health_report': {
+                    'temperature': choice([i for i in range(30, 45)]),
+                    'heart_rate': str(choice([i for i in range(50, 130)])),
+                    'blood_pressure': choice([i for i in range(15, 20)]),
+                    'report_time': Faker().time(),
+                    'report_date': Faker().date(),
+                }
+            }
+            message = json.dumps(str(data_req))
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json; charset=utf-8')
+            self.end_headers()
+            self.wfile.write(bytes(message, 'utf-8'))
+
+        # Various health reports
+        if re.match(r'/health/various/\d+$', self.path) is not None:
+            parsed_path = parse.urlparse(self.path)
+            quant = int(self.path.split('/')[-1])
+            data_req = {
+                'id': str(uuid.uuid4()),
+                'req_url': self.path,
+                'health_reports': [{
+                                    'temperature': choice([i for i in range(30, 45)]),
+                                    'heart_rate': str(choice([i for i in range(50, 130)])),
+                                    'blood_pressure': choice([i for i in range(15, 20)]),
+                                    'report_time': Faker().time(),
+                                    'report_date': Faker().date(),
+                                } for i in range(0,quant)]
+            }
+            message = json.dumps(str(data_req))
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json; charset=utf-8')
+            self.end_headers()
+            self.wfile.write(bytes(message, 'utf-8'))
+
+
+
+
+
+>>>>>>> development
 if __name__ == '__main__':
     from http.server import HTTPServer
     server = HTTPServer(('localhost', 8080), Fake_Server)
