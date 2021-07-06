@@ -1,3 +1,6 @@
+ 
+ <div align='center'>
+ 
     ______    _          _____
     |  ___|  | |        /  ___|
     | |_ __ _| | _____  \ `--.  ___ _ ____   _____ _ __
@@ -7,7 +10,10 @@
     
                                                                                                        
                                                                                                         
-                                                                                                        
+ </div>                                                                                                       
+
+---
+
  <div align='center'>Small server for testing. (JSon Placeholder style.)<br/>
  <span style="color:red;">Only for tests.</span>
  </div>
