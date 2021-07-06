@@ -20,8 +20,7 @@
 
 - [About](#about)
 - [Getting Started](#getting_started)
-- [Usage](#usage)
-- [Contributing](../CONTRIBUTING.md)
+
 
 ## About 🧐 <a name = "about"></a>
 
@@ -53,33 +52,20 @@ Use <ctrl-c> to stop.
 Opene your favorite Internet browser and go to: localhost:8080
 have fun! 😄
 
+(You should see a page with documentation about the server End-Points.)
+
 
 ### Prerequisites
 
-What things you need to install the software and how to install them.
+In order to run the project you must have installed:
+
+* Python 3
+* <a href='https://faker.readthedocs.io/en/master/'>Faker</a>
+
+
+To install the Faker library:
 
 ```
-Give examples
+pip install Faker
 ```
 
-### Installing
-
-A step by step series of examples that tell you how to get a development env running.
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo.
-
-## Usage <a name = "usage"></a>
-
-Add notes about how to use the system.
