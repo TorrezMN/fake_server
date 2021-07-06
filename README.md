@@ -25,11 +25,34 @@
 
 ## About 🧐 <a name = "about"></a>
 
-A time ago I start studying a little react. I found myself in the need to learn to make APIs calls. But I did not want to look for Internet services to practice, so I built this small local test server.
+A time ago I start studying a little about react and react-native. I found myself in the need to learn to make APIs calls in react. But I did not want to spend my life looking for a service to practice api calls, so I built this small local test server.
 
 ## Getting Started <a name = "getting_started"></a>
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
+To test the project. In the console write the following:
+
+```
+git clone https://github.com/TorrezMN/fake_server.git
+
+cd fake_server
+
+cd HTTP_Fake_Server
+
+python fake_server.py
+
+```
+
+you should see:
+
+```
+Server startet at: [localhost:8080]
+Use <ctrl-c> to stop.
+
+```
+
+Opene your favorite Internet browser and go to: localhost:8080
+have fun! 😄
+
 
 ### Prerequisites
 
