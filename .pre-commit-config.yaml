@@ -1,0 +1,24 @@
+repos:
+  # Format Python files.
+  - repo: https://github.com/psf/black
+    rev: 23.9.1
+    hooks:
+      - id: black
+        language_version: python3
+        exclude: '[\w-]+\d+[^/]*\.py'
+
+
+
+  # Remove trailing spaces in code.
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0  # Latest stable version
+    hooks:
+      - id: trailing-whitespace
+        args: [--markdown-linebreak-ext=md]  # Optional: Handle Markdown line breaks
+
+
+
+
+
+
+
